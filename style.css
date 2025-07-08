@@ -40,7 +40,7 @@ footer {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 10px;
+    padding: 20px 10px;
     position: static;
 }
 
@@ -76,4 +76,19 @@ footer {
 @keyframes slide-down {
     from {transform: translateY(-100%);}
     to {transform: translateY(0);}
+}
+/* Responsive tweaks */
+@media (max-width: 640px) {
+    #search {
+        display: none;
+    }
+}
+
+.footer-links a {
+    margin: 0 0.5rem;
+    color: #9ae6b4;
+    text-decoration: none;
+}
+.footer-links a:hover {
+    text-decoration: underline;
 }
