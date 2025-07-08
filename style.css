@@ -77,3 +77,11 @@ footer {
     from {transform: translateY(-100%);}
     to {transform: translateY(0);}
 }
+
+@keyframes sad-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+#no-results.show {
+    animation: sad-bounce 1s infinite;
+}
