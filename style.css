@@ -6,11 +6,12 @@ body {
 
 nav {
     background-color: #333;
-    padding: 10px;
+    padding: 20px;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 50;
+    animation: slide-down 0.5s ease;
 }
 
 nav ul {
@@ -45,6 +46,7 @@ footer {
 
 .product-card {
     transition: transform 0.3s, box-shadow 0.3s;
+    animation: fade-in 0.5s ease;
 }
 .product-card:hover {
     transform: translateY(-4px) scale(1.02);
@@ -64,4 +66,14 @@ footer {
 }
 #joy.show {
     animation: joy-pop 0.8s forwards;
+}
+
+@keyframes fade-in {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes slide-down {
+    from {transform: translateY(-100%);}
+    to {transform: translateY(0);}
 }
