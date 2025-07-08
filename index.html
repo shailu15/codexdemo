@@ -108,6 +108,7 @@
                 <button class="add-btn w-full px-3 py-1 bg-blue-600 text-white rounded" data-qty="0">Add</button>
             </div>
         </div>
+        <div id="no-results" class="hidden text-center text-6xl mt-6">🐶😢</div>
     </main>
     <footer class="bg-gray-800 text-white text-center py-4 w-full">
         <p>&copy; 2025 Basic Website</p>
@@ -153,10 +154,21 @@
         updateCartCount();
         document.getElementById('search').addEventListener('input', e => {
             const term = e.target.value.toLowerCase();
+            let found = false;
             document.querySelectorAll('.product-card').forEach(card => {
                 const name = card.dataset.name.toLowerCase();
-                card.style.display = name.includes(term) ? '' : 'none';
+                const match = name.includes(term);
+                card.style.display = match ? '' : 'none';
+                found = found || match;
             });
+            const noRes = document.getElementById('no-results');
+            if (!found && term) {
+                noRes.classList.remove('hidden');
+                noRes.classList.add('show');
+            } else {
+                noRes.classList.add('hidden');
+                noRes.classList.remove('show');
+            }
         });
 
         document.getElementById('menu-btn').addEventListener('click', () => {
