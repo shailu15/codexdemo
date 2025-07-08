@@ -10,8 +10,11 @@
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="vendor.html">Vendor</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li><button id="locate-btn">Track Location</button></li>
         </ul>
         <input id="search" type="text" placeholder="Search..." class="search-input">
     </nav>
@@ -27,5 +30,18 @@
         </div>
         <p>&copy; 2025 Basic Website</p>
     </footer>
+    <script>
+        document.getElementById('locate-btn').addEventListener('click', () => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(pos => {
+                    alert(`Latitude: ${pos.coords.latitude}\nLongitude: ${pos.coords.longitude}`);
+                }, () => {
+                    alert('Could not get location');
+                });
+            } else {
+                alert('Geolocation not supported');
+            }
+        });
+    </script>
 </body>
 </html>
