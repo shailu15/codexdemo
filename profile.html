@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="fade-in">
     <nav class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 p-4 shadow-lg">
         <div class="container mx-auto flex justify-between items-center text-white">
             <ul class="flex space-x-4">
@@ -20,9 +20,12 @@
             </div>
         </div>
     </nav>
-    <main class="container mx-auto py-10">
-        <h1 class="text-3xl font-bold mb-4 text-center">User Profile</h1>
-        <p class="text-center text-gray-700">This is a simple profile page.</p>
+    <main class="container mx-auto py-10 slide-up">
+        <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow text-center">
+            <img src="https://via.placeholder.com/120" alt="Avatar" class="rounded-full mx-auto mb-4">
+            <h1 class="text-3xl font-bold mb-2">User Profile</h1>
+            <p class="text-gray-700">Welcome to your account. Manage your orders and settings here.</p>
+        </div>
     </main>
     <footer class="bg-gray-800 text-white text-center py-4 fixed bottom-0 w-full">
         <p>&copy; 2025 Basic Website</p>
