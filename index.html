@@ -35,9 +35,9 @@
         </div>
     </nav>
 
-    <div id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-white transform -translate-x-full transition-transform duration-200 sm:hidden z-50 shadow-lg">
-        <button id="close-sidebar" class="m-4 text-gray-600">Close</button>
-        <ul class="mt-8 space-y-4 px-4">
+    <div id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-gradient-to-b from-blue-700 to-purple-700 text-white transform -translate-x-full transition-transform duration-200 sm:hidden z-50 shadow-2xl">
+        <button id="close-sidebar" class="m-4 text-white text-xl">✖</button>
+        <ul class="mt-8 space-y-4 px-6 font-medium">
             <li><a class="block hover:underline" href="index.html">Home</a></li>
             <li><a class="block hover:underline" href="products.html">Products</a></li>
             <li><a class="block hover:underline" href="about.html">About</a></li>
@@ -47,6 +47,11 @@
         </ul>
     </div>
     <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden sm:hidden z-40"></div>
+
+    <!-- Ad banner -->
+    <div class="ad-banner mt-24 mb-6 px-4">
+        <img src="https://picsum.photos/1200/300" alt="Special Offer" class="w-full h-40 sm:h-56 md:h-72 object-cover rounded-lg shadow-lg">
+    </div>
     <!-- Logout modal -->
     <div id="logout-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
         <div class="bg-white p-6 rounded shadow text-center">
@@ -56,7 +61,7 @@
         </div>
     </div>
     <main class="container mx-auto py-8">
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" id="products">
+        <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" id="products">
 
             <!-- Product cards inserted by HTML -->
             <div class="product-card bg-white rounded-lg shadow p-2 flex flex-col items-center text-center" data-name="Product 1">
@@ -123,6 +128,11 @@
         <div id="no-results" class="hidden text-center text-6xl mt-6">🐶😢</div>
     </main>
     <footer class="bg-gray-800 text-white text-center py-4 w-full">
+        <div class="mb-2 space-x-4">
+            <a href="#" class="hover:text-blue-400">Twitter</a>
+            <a href="#" class="hover:text-pink-500">Instagram</a>
+            <a href="#" class="hover:text-blue-600">Facebook</a>
+        </div>
         <p>&copy; 2025 Basic Website</p>
     </footer>
     <script>
