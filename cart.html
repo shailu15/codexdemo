@@ -16,11 +16,13 @@
             </div>
             <ul id="nav-links" class="hidden sm:flex space-x-4">
                 <li><a class="hover:underline" href="index.html">Home</a></li>
+                <li><a class="hover:underline" href="vendor.html">Vendor</a></li>
                 <li><a class="hover:underline" href="about.html">About</a></li>
                 <li><a class="hover:underline" href="contact.html">Contact</a></li>
             </ul>
             <div class="space-x-4 flex items-center">
                 <input id="search" type="text" placeholder="Search..." class="search-input" />
+                <button id="locate-btn" title="Track Location" class="hidden sm:inline px-3 py-1 bg-white text-gray-800 rounded shadow transition hover:shadow-lg active:scale-95">📍</button>
                 <a href="profile.html" title="Profile" class="hidden sm:inline px-3 py-1 bg-white text-gray-800 rounded shadow transition hover:shadow-lg active:scale-95">👤</a>
                 <button id="logout-btn" title="Log Out" class="hidden sm:inline px-3 py-1 bg-white text-gray-800 rounded shadow transition hover:shadow-lg active:scale-95">🚪</button>
                 <a href="cart.html" class="relative inline-block">
@@ -34,9 +36,11 @@
         <button id="close-sidebar" class="m-4 text-white text-xl">✖</button>
         <ul class="mt-8 space-y-4 px-6 font-medium">
             <li><a class="block hover:underline" href="index.html">Home</a></li>
+            <li><a class="block hover:underline" href="vendor.html">Vendor</a></li>
             <li><a class="block hover:underline" href="about.html">About</a></li>
             <li><a class="block hover:underline" href="contact.html">Contact</a></li>
             <li><a class="block hover:underline" href="profile.html">Profile</a></li>
+            <li><button id="sidebar-locate" class="w-full text-left hover:underline">Track Location</button></li>
             <li><button id="sidebar-logout" class="w-full text-left hover:underline">Log Out</button></li>
         </ul>
     </div>
@@ -103,12 +107,26 @@
             document.getElementById('sidebar').classList.add('-translate-x-full');
             document.getElementById('overlay').classList.add('hidden');
         });
-        document.getElementById('overlay').addEventListener('click', () => {
-            document.getElementById('sidebar').classList.add('-translate-x-full');
-            document.getElementById('overlay').classList.add('hidden');
-        });
+       document.getElementById('overlay').addEventListener('click', () => {
+           document.getElementById('sidebar').classList.add('-translate-x-full');
+           document.getElementById('overlay').classList.add('hidden');
+       });
         document.getElementById('sidebar-logout').addEventListener('click', () => {
             document.getElementById('logout-btn').click();
+        });
+        document.getElementById('sidebar-locate').addEventListener('click', () => {
+            document.getElementById('locate-btn').click();
+        });
+        document.getElementById('locate-btn').addEventListener('click', () => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(pos => {
+                    alert(`Latitude: ${pos.coords.latitude}\nLongitude: ${pos.coords.longitude}`);
+                }, () => {
+                    alert('Could not get location');
+                });
+            } else {
+                alert('Geolocation not supported');
+            }
         });
 
         const logoutModal = document.getElementById('logout-modal');
