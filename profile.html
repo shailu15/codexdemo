@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <nav class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 p-4 shadow-lg">
+    <nav class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 p-4 shadow-lg fixed top-0 left-0 w-full z-50">
         <div class="container mx-auto flex justify-between items-center text-white">
             <div class="flex items-center">
                 <span class="text-xl font-bold">Neebys</span>
@@ -20,6 +20,7 @@
                 <li><a class="hover:underline" href="contact.html">Contact</a></li>
             </ul>
             <div class="space-x-2 flex items-center">
+                <input id="search" type="text" placeholder="Search..." class="hidden sm:inline-block px-2 py-1 rounded text-gray-800" />
                 <span class="hidden sm:inline px-3 py-1 bg-white text-gray-800 rounded shadow">Profile</span>
             </div>
         </div>
@@ -38,7 +39,7 @@
         <h1 class="text-3xl font-bold mb-4 text-center">User Profile</h1>
         <p class="text-center text-gray-700">This is a simple profile page.</p>
     </main>
-    <footer class="bg-gray-800 text-white text-center py-4 fixed bottom-0 w-full">
+    <footer class="bg-gray-800 text-white text-center py-4 w-full">
         <p>&copy; 2025 Basic Website</p>
     </footer>
     <script>
