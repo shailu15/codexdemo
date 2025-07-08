@@ -47,6 +47,14 @@
         </ul>
     </div>
     <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden sm:hidden z-40"></div>
+    <!-- Logout modal -->
+    <div id="logout-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white p-6 rounded shadow text-center">
+            <p class="mb-4">Do you want to logout?</p>
+            <button id="logout-confirm" class="bg-red-600 text-white px-4 py-2 rounded mr-2">Yes</button>
+            <button id="logout-cancel" class="bg-gray-300 px-4 py-2 rounded">No</button>
+        </div>
+    </div>
     <main class="container mx-auto py-8">
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" id="products">
 
@@ -191,10 +199,21 @@
             document.getElementById('logout-btn').click();
         });
 
+        const logoutModal = document.getElementById('logout-modal');
+        const logoutConfirm = document.getElementById('logout-confirm');
+        const logoutCancel = document.getElementById('logout-cancel');
+
         document.getElementById('logout-btn').addEventListener('click', () => {
-            if (confirm('Are you sure you want to logout?')) {
-                alert('Logged out');
-            }
+            logoutModal.classList.remove('hidden');
+            logoutModal.classList.add('flex');
+        });
+        logoutCancel.addEventListener('click', () => {
+            logoutModal.classList.add('hidden');
+            logoutModal.classList.remove('flex');
+        });
+        logoutConfirm.addEventListener('click', () => {
+            localStorage.removeItem('user');
+            window.location.href = 'signup.html';
         });
 
         const favicon = document.getElementById('favicon');
