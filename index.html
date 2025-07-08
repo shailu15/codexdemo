@@ -22,7 +22,10 @@
                 <li><a class="hover:underline" href="contact.html">Contact</a></li>
             </ul>
             <div class="space-x-4 flex items-center">
-                <input id="search" type="text" placeholder="Search..." class="px-2 py-1 rounded text-gray-800" />
+                <div id="search-container" class="relative">
+                    <input id="search" type="text" placeholder="Search..." class="px-2 py-1 rounded text-gray-800 w-40" autocomplete="off" />
+                    <div id="suggestions" class="absolute left-0 right-0 mt-1 bg-white text-gray-800 border rounded shadow hidden"></div>
+                </div>
                 <a href="profile.html" class="hidden sm:inline px-3 py-1 bg-white text-gray-800 rounded shadow transition hover:shadow-lg active:scale-95">Profile</a>
                 <button id="logout-btn" class="hidden sm:inline px-3 py-1 bg-white text-gray-800 rounded shadow transition hover:shadow-lg active:scale-95">Log Out</button>
                 <a href="cart.html" class="relative inline-block">
@@ -151,12 +154,38 @@
         });
 
         updateCartCount();
-        document.getElementById('search').addEventListener('input', e => {
+        const searchInput = document.getElementById('search');
+        const suggestionBox = document.getElementById('suggestions');
+        const keywords = ['buy apple', 'buy banana', 'buy orange', 'buy grapes', 'buy mango'];
+
+        searchInput.addEventListener('input', e => {
             const term = e.target.value.toLowerCase();
+            // filter products
             document.querySelectorAll('.product-card').forEach(card => {
                 const name = card.dataset.name.toLowerCase();
                 card.style.display = name.includes(term) ? '' : 'none';
             });
+            // build suggestions list
+            suggestionBox.innerHTML = '';
+            if (term) {
+                const matches = keywords.filter(k => k.toLowerCase().startsWith(term));
+                matches.forEach(item => {
+                    const div = document.createElement('div');
+                    div.textContent = item;
+                    div.addEventListener('click', () => {
+                        searchInput.value = item;
+                        suggestionBox.classList.add('hidden');
+                        searchInput.dispatchEvent(new Event('input'));
+                    });
+                    suggestionBox.appendChild(div);
+                });
+                suggestionBox.classList.toggle('hidden', matches.length === 0);
+            } else {
+                suggestionBox.classList.add('hidden');
+            }
+        });
+        searchInput.addEventListener('blur', () => {
+            setTimeout(() => suggestionBox.classList.add('hidden'), 100);
         });
 
         document.getElementById('menu-btn').addEventListener('click', () => {
