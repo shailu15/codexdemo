@@ -6,7 +6,12 @@ body {
 
 nav {
     background-color: #333;
-    padding: 10px;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+    animation: slide-down 0.5s ease;
 }
 
 nav ul {
@@ -27,6 +32,7 @@ nav ul li a {
 
 main {
     padding: 20px;
+    margin-top: 60px;
     margin-bottom: 60px; /* space for footer */
 }
 
@@ -35,9 +41,49 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    position: static;
+}
+
+.product-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fade-in 0.5s ease;
+}
+.product-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+.add-btn span {
+    pointer-events: auto;
+}
+.inc-inline, .dec-inline {
+    cursor: pointer;
+}
+
+@keyframes joy-pop {
+    0% {transform: scale(0); opacity: 0;}
+    50% {transform: scale(1.2); opacity: 1;}
+    100% {transform: scale(1); opacity: 0;}
+}
+#joy.show {
+    animation: joy-pop 0.8s forwards;
+}
+
+@keyframes fade-in {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes slide-down {
+    from {transform: translateY(-100%);}
+    to {transform: translateY(0);}
+}
+
+@keyframes sad-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+#no-results.show {
+    animation: sad-bounce 1s infinite;
 }
 /* Animations */
 .fade-in {
