@@ -47,6 +47,7 @@ footer {
 .product-card {
     transition: transform 0.3s, box-shadow 0.3s;
     animation: fade-in 0.5s ease;
+    width: 150px;
 }
 .product-card:hover {
     transform: translateY(-4px) scale(1.02);
@@ -107,9 +108,20 @@ footer {
 /* Product card hover effect */
 .product-card {
   transition: transform 0.3s, box-shadow 0.3s;
+  width: 150px;
 }
 
 .product-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+.search-input {
+    padding: 8px 12px;
+    border-radius: 6px;
+    width: 220px;
+    border: 1px solid #ccc;
+}
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.5);
 }
